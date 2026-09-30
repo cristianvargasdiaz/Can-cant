@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Grammar Quest: Can & Can't</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        nunito: ['Nunito', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            purple: '#6C5CE7',
+                            pink: '#FD79A8',
+                            yellow: '#FDCB6E',
+                            blue: '#0984E3',
+                            green: '#00B894',
+                            dark: '#2D3436'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #a8c0ff 0%, #3f2b96 100%);
+            min-height: 100vh;
+        }
+
+        /* Custom Keyframe Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes blur-toggle {
+            0%, 100% { filter: blur(3px); }
+            50% { filter: blur(0px); }
+        }
+
+        @keyframes drive {
+            0% { transform: translateX(-20px); }
+            50% { transform: translateX(20px); }
+            100% { transform: translateX(-20px); }
+        }
+
+        @keyframes swim {
+            0% { transform: translateX(-30px) translateY(0); }
+            50% { transform: translateX(30px) translateY(-8px); }
+            100% { transform: translateX(-30px) translateY(0); }
+        }
+
+        @keyframes cook-steam {
+            0% { opacity: 0.2; transform: translateY(0) scaleX(1); }
+            50% { opacity: 0.8; transform: translateY(-15px) scaleX(1.2); }
+            100% { opacity: 0; transform: translateY(-30px) scaleX(1); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+
+        .animate-float { animation: float 4s ease-in-out infinite; }
+        .animate-pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }
+        .animate-drive { animation: drive 3s ease-in-out infinite; }
+        .animate-swim { animation: swim 4s ease-in-out infinite; }
+        .animate-steam { animation: cook-steam 2s infinite; }
+        .animate-blur { animation: blur-toggle 3s ease-in-out infinite; }
+        .animate-shake { animation: shake 0.5s ease-in-out; }
+
+        @keyframes wobble {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-8deg); }
+            75% { transform: rotate(8deg); }
+        }
+        @keyframes wave-motion {
+            0% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(-15px) translateY(-5px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+        @keyframes wheel-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes speed-dash {
+            0% { stroke-dashoffset: 20; }
+            100% { stroke-dashoffset: 0; }
+        }
+        @keyframes pop-bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15) translateY(-4px); }
+        }
+
+        .animate-wobble { animation: wobble 2s ease-in-out infinite; }
+        .animate-wave { animation: wave-motion 3s ease-in-out infinite; }
+        .animate-spin-fast { animation: wheel-spin 0.8s linear infinite; }
+        .animate-pop { animation: pop-bounce 1.5s ease-in-out infinite; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.4);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen text-slate-800 p-2 sm:p-4 md:p-6 justify-between">
+
+    <!-- Top Navigation Header -->
+    <header class="max-w-4xl w-full mx-auto bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-xl mb-4 flex flex-wrap justify-between items-center gap-2 border border-white/40">
+        <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-gradient-to-tr from-brand-purple to-brand-pink rounded-xl flex items-center justify-center text-white text-2xl shadow-md">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div>
+                <h1 class="font-fredoka text-xl sm:text-2xl font-bold text-slate-800 leading-tight">Grammar Quest</h1>
+                <p class="text-xs sm:text-sm text-slate-500 font-semibold">Modal Verbs: <span class="text-brand-purple">Can</span> & <span class="text-brand-pink">Can't</span></p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button id="soundToggleBtn" onclick="toggleSound()" class="p-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition font-bold text-sm flex items-center gap-2 shadow-sm">
+                <i id="soundIcon" class="fa-solid fa-volume-high text-brand-purple"></i>
+                <span id="soundStatus" class="hidden sm:inline">Sonido: ON</span>
+            </button>
+            <button onclick="showInfoModal()" class="p-2.5 px-3 bg-brand-yellow/20 hover:bg-brand-yellow/30 text-amber-800 rounded-xl transition font-bold text-sm flex items-center gap-2 border border-amber-300">
+                <i class="fa-solid fa-circle-info text-amber-600"></i>
+                <span class="hidden sm:inline">Ayuda</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Game Container -->
+    <main class="max-w-4xl w-full mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100 my-auto flex flex-col min-h-[550px]">
+        
+        <!-- START SCREEN -->
+        <div id="startScreen" class="p-6 sm:p-12 text-center flex flex-col items-center justify-center flex-1 my-auto">
+            <div class="w-24 h-24 bg-indigo-100 text-brand-purple rounded-full flex items-center justify-center text-5xl mb-6 shadow-inner animate-float">
+                <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <h2 class="font-fredoka text-3xl sm:text-4xl font-bold text-slate-800 mb-3">¡Bienvenido al Desafío!</h2>
+            <p class="text-slate-600 max-w-lg mb-6 text-base sm:text-lg">
+                Demuestra tu dominio del inglés completando las 15 oraciones con <span class="font-bold text-brand-purple">CAN</span> o <span class="font-bold text-brand-pink">CAN'T</span> según cada escena animada.
+            </p>
+
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-8 text-left max-w-md w-full text-xs sm:text-sm text-amber-900 flex items-start gap-3">
+                <i class="fa-solid fa-shield-halved text-amber-600 text-xl mt-0.5"></i>
+                <div>
+                    <strong>Regla del juego:</strong> Podrás modificar tus respuestas durante el ejercicio. Las soluciones correctas y la puntuación se revelarán <span class="underline font-bold">únicamente al finalizar</span> todas las preguntas.
+                </div>
+            </div>
+
+            <div class="w-full max-w-md mb-6 text-left">
+                <label for="studentName" class="block text-sm font-bold text-slate-700 mb-2">
+                    Nombre del estudiante <span class="text-rose-500 font-extrabold">* (Obligatorio)</span>:
+                </label>
+                <input type="text" id="studentName" placeholder="Escribe tu nombre completo aquí..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-4 focus:ring-indigo-200 focus:border-brand-purple outline-none transition font-semibold text-slate-700" oninput="validateNameInput()">
+                <p id="nameError" class="text-xs text-rose-500 font-bold mt-2 hidden flex items-center gap-1.5">
+                    <i class="fa-solid fa-circle-exclamation text-sm"></i> Por favor ingresa tu nombre para poder comenzar.
+                </p>
+            </div>
+
+            <button onclick="startGame()" class="bg-gradient-to-r from-brand-purple to-indigo-600 hover:from-indigo-600 hover:to-brand-purple text-white font-fredoka text-xl py-4 px-10 rounded-2xl shadow-lg hover:shadow-indigo-300/50 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-3">
+                <span>¡Empezar Juego!</span>
+                <i class="fa-solid fa-circle-play"></i>
+            </button>
+        </div>
+
+        <!-- PLAYING SCREEN -->
+        <div id="playScreen" class="hidden flex-col flex-1">
+            <!-- Progress Bar Bar -->
+            <div class="bg-slate-100 p-4 px-6 border-b border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-3">
+                <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <span id="questionBadge" class="bg-brand-purple text-white font-bold text-xs px-3 py-1 rounded-full shadow">
+                        Pregunta 1 / 15
+                    </span>
+                    <div class="w-full sm:w-48 bg-slate-200 h-3 rounded-full overflow-hidden">
+                        <div id="progressBar" class="bg-gradient-to-r from-brand-purple to-brand-pink h-full w-[6.66%] transition-all duration-300"></div>
+                    </div>
+                </div>
+
+                <!-- Navigation Dots Preview -->
+                <div id="questionDots" class="flex flex-wrap gap-1.5 justify-center">
+                    <!-- Dots generated via JS -->
+                </div>
+            </div>
+
+            <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 p-6 items-center">
+                
+                <!-- Dynamic Scene Animation Container (Legend removed) -->
+                <div class="bg-gradient-to-b from-slate-50 to-indigo-50/50 rounded-2xl p-6 border border-slate-200/80 flex flex-col items-center justify-center min-h-[260px] relative overflow-hidden shadow-inner">
+                    <div id="animationBox" class="w-full h-full flex flex-col items-center justify-center my-auto">
+                        <!-- Dynamic SVG / HTML Animation loaded here -->
+                    </div>
+                </div>
+
+                <!-- Sentence & Inputs Container -->
+                <div class="flex flex-col justify-center space-y-6">
+                    <div class="bg-slate-50 border-2 border-indigo-100 rounded-2xl p-6 shadow-sm">
+                        <div class="text-xs font-bold text-indigo-500 uppercase tracking-wider mb-2">Completa la oración</div>
+                        
+                        <div class="text-xl sm:text-2xl font-bold text-slate-800 leading-relaxed" id="sentenceContainer">
+                            <!-- Sentence with blank placeholder inserted by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Option Selection Buttons -->
+                    <div class="space-y-3">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Selecciona la respuesta correcta:</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button id="optCan" onclick="selectAnswer('can')" class="option-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-brand-purple hover:bg-indigo-50/50 font-fredoka text-2xl text-slate-700 transition flex items-center justify-center gap-2 shadow-sm active:scale-95">
+                                <span class="w-4 h-4 rounded-full border-2 border-slate-300 inline-block radio-indicator"></span>
+                                <span>can</span>
+                            </button>
+                            <button id="optCant" onclick="selectAnswer('can\'t')" class="option-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-brand-pink hover:bg-pink-50/50 font-fredoka text-2xl text-slate-700 transition flex items-center justify-center gap-2 shadow-sm active:scale-95">
+                                <span class="w-4 h-4 rounded-full border-2 border-slate-300 inline-block radio-indicator"></span>
+                                <span>can't</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Hint / Context note -->
+                    <div id="hintBox" class="text-xs text-slate-500 italic bg-slate-100 p-3 rounded-lg flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                        <span id="hintText">Observa la escena animada para deducir el significado.</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Navigation Control Footer -->
+            <div class="p-4 px-6 bg-slate-50 border-t border-slate-200 flex justify-between items-center">
+                <button id="prevBtn" onclick="prevQuestion()" class="px-5 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl transition flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Anterior</span>
+                </button>
+
+                <button id="nextBtn" onclick="nextQuestion()" class="px-6 py-2.5 bg-brand-purple hover:bg-indigo-700 text-white font-bold rounded-xl transition flex items-center gap-2 shadow-md">
+                    <span id="nextBtnText">Siguiente</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- RESULTS / REVIEW SCREEN -->
+        <div id="resultScreen" class="hidden flex-col p-6 sm:p-10 flex-1 overflow-y-auto max-h-[75vh]">
+            <div class="text-center mb-8">
+                <div id="scoreBadge" class="w-20 h-20 mx-auto bg-gradient-to-tr from-green-400 to-emerald-600 text-white rounded-full flex items-center justify-center text-3xl font-bold shadow-lg mb-4 animate-bounce">
+                    15/15
+                </div>
+                <h2 id="resultTitle" class="font-fredoka text-3xl font-bold text-slate-800 mb-1">¡Excelente Trabajo!</h2>
+                <p id="studentGreeting" class="text-slate-600 text-sm font-semibold mb-2">Resultados finales de la actividad</p>
+                <p id="resultSubtitle" class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">
+                    A continuación puedes revisar en detalle cada ejercicio y aprender de tus aciertos y errores.
+                </p>
+            </div>
+
+            <!-- Summary Table / List -->
+            <div class="space-y-3 mb-8" id="reviewContainer">
+                <!-- Dynamic Review cards inserted here -->
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 pt-4 border-t border-slate-200">
+                <button onclick="restartGame()" class="px-6 py-3 bg-brand-purple hover:bg-indigo-700 text-white font-bold rounded-xl transition flex items-center gap-2 shadow-md">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span>Intentar de nuevo</span>
+                </button>
+                <button onclick="window.print()" class="px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl transition flex items-center gap-2 shadow-md">
+                    <i class="fa-solid fa-print"></i>
+                    <span>Imprimir / Guardar Reporte</span>
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Info -->
+    <footer class="max-w-4xl w-full mx-auto text-center mt-4 text-xs text-white/80 font-medium">
+        Recurso Educativo para Prepa 11 - Generación 2026D - English II; Teacher: Cristian Vargas
+    </footer>
+
+    <!-- Info Modal -->
+    <div id="infoModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                <h3 class="font-fredoka text-xl font-bold text-slate-800 flex items-center gap-2">
+                    <i class="fa-solid fa-book-open text-brand-purple"></i> Uso de CAN y CAN'T
+                </h3>
+                <button onclick="closeInfoModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="space-y-3 text-sm text-slate-600 max-h-[60vh] overflow-y-auto pr-1">
+                <div class="p-3 bg-indigo-50 rounded-xl border border-indigo-100">
+                    <p class="font-bold text-indigo-900 mb-1">1. Habilidad o Capacidad (Ability):</p>
+                    <p>Usamos <span class="font-bold text-brand-purple">CAN</span> para lo que sabemos o podemos hacer, y <span class="font-bold text-brand-pink">CAN'T</span> para lo que no podemos hacer.</p>
+                    <p class="text-xs text-indigo-700 italic mt-1">&bull; Example: She can swim. / Dogs can't fly.</p>
+                </div>
+
+                <div class="p-3 bg-pink-50 rounded-xl border border-pink-100">
+                    <p class="font-bold text-pink-900 mb-1">2. Permiso y Petición (Permission & Request):</p>
+                    <p>Usamos <span class="font-bold text-brand-purple">CAN</span> para pedir permiso o solicitar algo educadamente.</p>
+                    <p class="text-xs text-pink-700 italic mt-1">&bull; Example: Can I use your phone?</p>
+                </div>
+
+                <div class="p-3 bg-amber-50 rounded-xl border border-amber-100">
+                    <p class="font-bold text-amber-900 mb-1">3. Prohibición e Imposibilidad (Prohibition):</p>
+                    <p>Usamos <span class="font-bold text-brand-pink">CAN'T</span> para acciones no permitidas o imposibles según el contexto.</p>
+                    <p class="text-xs text-amber-800 italic mt-1">&bull; Example: You can't drive at 2 years old.</p>
+                </div>
+            </div>
+
+            <button onclick="closeInfoModal()" class="w-full py-3 bg-brand-purple text-white font-bold rounded-xl hover:bg-indigo-700 transition">
+                ¡Entendido!
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Game Dataset containing 15 exact sentences
+        const questionsData = [
+            {
+                id: 1,
+                prefix: "She ",
+                suffix: " read without glasses.",
+                correct: "can't",
+                hint: "Necesita anteojos para ver bien las letras.",
+                explanation: "Imposibilidad o falta de habilidad visual sin gafas.",
+                animType: "glasses"
+            },
+            {
+                id: 2,
+                prefix: "Michael, ",
+                suffix: " we go tomorrow?",
+                correct: "can",
+                hint: "Haciendo una propuesta o pregunta sobre planes futuros.",
+                explanation: "Se usa 'can' para hacer preguntas sobre posibilidad o planes.",
+                animType: "calendar"
+            },
+            {
+                id: 3,
+                prefix: "You ",
+                suffix: " say that, that’s impolite.",
+                correct: "can't",
+                hint: "Es de mala educación decir cosas groseras.",
+                explanation: "Prohibición o conducta inapropiada ('can't').",
+                animType: "impolite"
+            },
+            {
+                id: 4,
+                prefix: "He ",
+                suffix: " help you, he is very busy now.",
+                correct: "can't",
+                hint: "Tiene demasiado trabajo en este momento.",
+                explanation: "Falta de disponibilidad o imposibilidad momentánea.",
+                animType: "busy"
+            },
+            {
+                id: 5,
+                prefix: "",
+                suffix: " I use your phone?",
+                correct: "can",
+                hint: "Pidiendo permiso amablemente.",
+                explanation: "Petición o solicitud de permiso ('Can I...?').",
+                animType: "phone"
+            },
+            {
+                id: 6,
+                prefix: "",
+                suffix: " you speak English?",
+                correct: "can",
+                hint: "Preguntando por una habilidad de idioma.",
+                explanation: "Pregunta estándar sobre habilidad ('Can you...?').",
+                animType: "languages"
+            },
+            {
+                id: 7,
+                prefix: "",
+                suffix: " you take me to the mall?",
+                correct: "can",
+                hint: "Pidiendo un favor de transporte.",
+                explanation: "Solicitud o petición de ayuda ('Can you...?').",
+                animType: "mall"
+            },
+            {
+                id: 8,
+                prefix: "Animals ",
+                suffix: " read.",
+                correct: "can't",
+                hint: "Los animales no poseen la capacidad de leer libros.",
+                explanation: "Incapacidad natural de los animales.",
+                animType: "animal"
+            },
+            {
+                id: 9,
+                prefix: "Juan is two years old, he ",
+                suffix: " drive a car.",
+                correct: "can't",
+                hint: "Un bebé de 2 años no tiene la edad ni permiso para conducir.",
+                explanation: "Imposibilidad física y legal.",
+                animType: "baby_drive"
+            },
+            {
+                id: 10,
+                prefix: "Some people ",
+                suffix: " speak three languages.",
+                correct: "can",
+                hint: "Hay personas multilingües con esa gran habilidad.",
+                explanation: "Capacidad u habilidad especial de algunas personas.",
+                animType: "polyglot"
+            },
+            {
+                id: 11,
+                prefix: "I ",
+                suffix: " swim very well.",
+                correct: "can",
+                hint: "Nadar como un profesional en el agua.",
+                explanation: "Habilidad física positiva ('can').",
+                animType: "swim"
+            },
+            {
+                id: 12,
+                prefix: "My sister ",
+                suffix: " cook very good.",
+                correct: "can",
+                hint: "Prepara platillos deliciosos.",
+                explanation: "Destreza o habilidad culinaria.",
+                animType: "cook"
+            },
+            {
+                id: 13,
+                prefix: "She ",
+                suffix: " run faster than Pablo.",
+                correct: "can",
+                hint: "Gana la carrera de velocidad.",
+                explanation: "Habilidad física de velocidad superior.",
+                animType: "run"
+            },
+            {
+                id: 14,
+                prefix: "I’m full. I ",
+                suffix: " eat any more.",
+                correct: "can't",
+                hint: "Estar completamente satisfecho después de comer.",
+                explanation: "Imposibilidad física por estar lleno.",
+                animType: "full_stomach"
+            },
+            {
+                id: 15,
+                prefix: "We ",
+                suffix: " go to the movies, it’s closed.",
+                correct: "can't",
+                hint: "El cine tiene un letrero de CERRADO.",
+                explanation: "Imposibilidad externa porque el lugar está cerrado.",
+                animType: "cinema_closed"
+            }
+        ];
+
+        // App State
+        let currentIndex = 0;
+        let userAnswers = {}; // { questionId: 'can' | 'can\'t' }
+        let soundEnabled = true;
+        let studentName = "";
+
+        // Web Audio API for synthetic sound effects without external audio files
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function playSound(type) {
+            if (!soundEnabled) return;
+            try {
+                if (!audioCtx) audioCtx = new AudioCtx();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                const now = audioCtx.currentTime;
+
+                if (type === 'click') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(400, now);
+                    osc.frequency.exponentialRampToValueAtTime(800, now + 0.08);
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.08);
+                    osc.start(now);
+                    osc.stop(now + 0.08);
+                } else if (type === 'select') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now); // C5
+                    osc.frequency.setValueAtTime(659.25, now + 0.08); // E5
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.2);
+                    osc.start(now);
+                    osc.stop(now + 0.2);
+                } else if (type === 'finish') {
+                    // Win chime
+                    const freqs = [523.25, 659.25, 783.99, 1046.50];
+                    freqs.forEach((f, idx) => {
+                        const o = audioCtx.createOscillator();
+                        const g = audioCtx.createGain();
+                        o.connect(g);
+                        g.connect(audioCtx.destination);
+                        o.frequency.setValueAtTime(f, now + idx * 0.1);
+                        g.gain.setValueAtTime(0.15, now + idx * 0.1);
+                        g.gain.linearRampToValueAtTime(0.01, now + idx * 0.1 + 0.3);
+                        o.start(now + idx * 0.1);
+                        o.stop(now + idx * 0.1 + 0.3);
+                    });
+                }
+            } catch(e) {
+                console.log("Audio not supported or blocked");
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundStatus').innerText = soundEnabled ? 'Sonido: ON' : 'Sonido: OFF';
+            document.getElementById('soundIcon').className = soundEnabled ? 'fa-solid fa-volume-high text-brand-purple' : 'fa-solid fa-volume-xmark text-slate-400';
+        }
+
+        function validateNameInput() {
+            const input = document.getElementById('studentName');
+            const errorMsg = document.getElementById('nameError');
+            if (input.value.trim() !== "") {
+                input.classList.remove('border-rose-500', 'ring-2', 'ring-rose-200');
+                errorMsg.classList.add('hidden');
+            }
+        }
+
+        function startGame() {
+            const nameInput = document.getElementById('studentName');
+            studentName = nameInput.value.trim();
+            
+            if (!studentName) {
+                nameInput.classList.add('border-rose-500', 'ring-2', 'ring-rose-200');
+                document.getElementById('nameError').classList.remove('hidden');
+                nameInput.focus();
+                playSound('select');
+                return;
+            }
+
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('playScreen').classList.remove('hidden');
+            document.getElementById('playScreen').classList.add('flex');
+            
+            currentIndex = 0;
+            userAnswers = {};
+            renderDots();
+            loadQuestion(currentIndex);
+            playSound('click');
+        }
+
+        function renderDots() {
+            const dotsContainer = document.getElementById('questionDots');
+            dotsContainer.innerHTML = '';
+            questionsData.forEach((q, idx) => {
+                const dot = document.createElement('button');
+                dot.onclick = () => jumpToQuestion(idx);
+                dot.id = `dot-${idx}`;
+                dot.className = `w-6 h-6 rounded-full font-bold text-xs flex items-center justify-center transition ${
+                    idx === currentIndex 
+                    ? 'bg-brand-purple text-white ring-2 ring-indigo-300' 
+                    : userAnswers[q.id] 
+                        ? 'bg-indigo-100 text-brand-purple border border-indigo-300' 
+                        : 'bg-slate-200 text-slate-500'
+                }`;
+                dot.innerText = idx + 1;
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function loadQuestion(index) {
+            const q = questionsData[index];
+            
+            // Update Question Badge & Progress Bar
+            document.getElementById('questionBadge').innerText = `Pregunta ${index + 1} / ${questionsData.length}`;
+            const pct = ((index + 1) / questionsData.length) * 100;
+            document.getElementById('progressBar').style.width = `${pct}%`;
+
+            // Format sentence text with blank spot
+            const prefixHtml = q.prefix ? `<span>${q.prefix}</span>` : '';
+            const isCapital = q.prefix === '';
+            const selectedVal = userAnswers[q.id];
+
+            let displayVal = '_______';
+            let activeColor = 'text-indigo-600 border-indigo-300 bg-indigo-50/50';
+
+            if (selectedVal) {
+                displayVal = isCapital 
+                    ? (selectedVal === 'can' ? 'Can' : "Can't") 
+                    : selectedVal;
+                activeColor = 'text-brand-purple border-brand-purple bg-indigo-100/80 underline decoration-2';
+            }
+
+            document.getElementById('sentenceContainer').innerHTML = `
+                ${prefixHtml}
+                <span class="inline-block px-3 py-1 mx-1 rounded-xl border-2 ${activeColor} transition-all duration-200">
+                    ${displayVal}
+                </span>
+                <span>${q.suffix}</span>
+            `;
+
+            // Update Option buttons state
+            updateOptionButtons(selectedVal);
+
+            // Update Hint
+            document.getElementById('hintText').innerText = q.hint;
+
+            // Render Animation Scene
+            renderAnimationScene(q.animType);
+
+            // Update Navigation Dots
+            renderDots();
+
+            // Update Prev/Next Buttons
+            document.getElementById('prevBtn').disabled = (index === 0);
+            
+            const nextBtnText = document.getElementById('nextBtnText');
+            if (index === questionsData.length - 1) {
+                nextBtnText.innerText = "Finalizar Ejercicio";
+            } else {
+                nextBtnText.innerText = "Siguiente";
+            }
+        }
+
+        function updateOptionButtons(selectedVal) {
+            const btnCan = document.getElementById('optCan');
+            const btnCant = document.getElementById('optCant');
+
+            // Reset styles
+            btnCan.className = "option-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-brand-purple hover:bg-indigo-50/50 font-fredoka text-2xl text-slate-700 transition flex items-center justify-center gap-2 shadow-sm active:scale-95";
+            btnCant.className = "option-btn p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-brand-pink hover:bg-pink-50/50 font-fredoka text-2xl text-slate-700 transition flex items-center justify-center gap-2 shadow-sm active:scale-95";
+
+            const radioCan = btnCan.querySelector('.radio-indicator');
+            const radioCant = btnCant.querySelector('.radio-indicator');
+
+            radioCan.className = "w-4 h-4 rounded-full border-2 border-slate-300 inline-block radio-indicator";
+            radioCant.className = "w-4 h-4 rounded-full border-2 border-slate-300 inline-block radio-indicator";
+
+            if (selectedVal === 'can') {
+                btnCan.classList.add('border-brand-purple', 'bg-indigo-50', 'text-brand-purple', 'ring-2', 'ring-indigo-200');
+                radioCan.className = "w-4 h-4 rounded-full border-4 border-brand-purple bg-white inline-block radio-indicator";
+            } else if (selectedVal === "can't") {
+                btnCant.classList.add('border-brand-pink', 'bg-pink-50', 'text-brand-pink', 'ring-2', 'ring-pink-200');
+                radioCant.className = "w-4 h-4 rounded-full border-4 border-brand-pink bg-white inline-block radio-indicator";
+            }
+        }
+
+        function selectAnswer(option) {
+            const currentQ = questionsData[currentIndex];
+            userAnswers[currentQ.id] = option;
+            playSound('select');
+            loadQuestion(currentIndex);
+        }
+
+        function nextQuestion() {
+            playSound('click');
+            if (currentIndex < questionsData.length - 1) {
+                currentIndex++;
+                loadQuestion(currentIndex);
+            } else {
+                finishGame();
+            }
+        }
+
+        function prevQuestion() {
+            playSound('click');
+            if (currentIndex > 0) {
+                currentIndex--;
+                loadQuestion(currentIndex);
+            }
+        }
+
+        function jumpToQuestion(idx) {
+            playSound('click');
+            currentIndex = idx;
+            loadQuestion(currentIndex);
+        }
+
+        function renderAnimationScene(type) {
+            const box = document.getElementById('animationBox');
+            let content = '';
+
+            switch(type) {
+                case 'glasses':
+                    content = `
+                        <div class="relative flex flex-col items-center justify-center w-full max-w-xs">
+                            <div class="bg-white p-4 rounded-xl shadow-md border border-slate-200 text-center w-full animate-blur">
+                                <p class="text-slate-800 font-bold text-lg leading-tight">The quick brown fox jumps over the lazy dog</p>
+                                <p class="text-slate-400 text-xs mt-1">Can you read this text clearly?</p>
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <svg class="w-48 h-24 animate-float text-indigo-600 drop-shadow-lg" viewBox="0 0 200 100" fill="none" stroke="currentColor" stroke-width="6">
+                                    <circle cx="50" cy="50" r="35" fill="rgba(255,255,255,0.4)" stroke="currentColor"/>
+                                    <circle cx="150" cy="50" r="35" fill="rgba(255,255,255,0.4)" stroke="currentColor"/>
+                                    <line x1="85" y1="50" x2="115" y2="50" stroke-width="8"/>
+                                    <line x1="15" y1="50" x2="0" y2="40"/>
+                                    <line x1="185" y1="50" x2="200" y2="40"/>
+                                </svg>
+                            </div>
+                            <div class="mt-4 flex gap-1 text-amber-500 text-sm font-bold">
+                                👓 Necesita lentes para enfocar
+                            </div>
+                        </div>`;
+                    break;
+
+                case 'calendar':
+                    content = `
+                        <div class="flex flex-col items-center">
+                            <div class="relative w-36 h-36 bg-white rounded-2xl shadow-xl border-4 border-indigo-400 flex flex-col overflow-hidden animate-pop">
+                                <div class="bg-indigo-600 text-white font-fredoka font-bold text-sm py-1.5 text-center tracking-wider">
+                                    TOMORROW
+                                </div>
+                                <div class="flex-1 flex flex-col items-center justify-center bg-indigo-50/50">
+                                    <span class="text-4xl">🗓️</span>
+                                    <span class="font-fredoka text-indigo-900 font-bold text-xl mt-1">PROPOSAL</span>
+                                </div>
+                                <div class="absolute bottom-2 right-2 text-2xl animate-bounce">✈️</div>
+                            </div>
+                            <div class="mt-3 bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full border border-indigo-200">
+                                ¿Planes para mañana?
+                            </div>
+                        </div>`;
+                    break;
+
+                case 'impolite':
+                    content = `
+                        <div class="flex flex-col items-center">
+                            <div class="relative flex items-center justify-center">
+                                <div class="w-24 h-24 bg-rose-100 border-4 border-rose-400 rounded-full flex items-center justify-center text-5xl animate-shake shadow-lg">
+                                    🤬
+                                </div>
+                                <div class="absolute -top-3 -right-3 bg-red-600 text-white font-extrabold text-xs px-2.5 py-1 rounded-full animate-pulse border-2 border-white shadow">
+                                    NO!
+                                </div>
+                            </div>
+                            <div class="mt-3 bg-red-50 border border-red-200 text-red-700 text-xs font-bold px-4 py-1.5 rounded-full flex items-center gap-2">
+                                <i class="fa-solid fa-ban text-red-500"></i>
+                                <span>Lógica: Es irrespetuoso e impuntual</span>
+                            </div>
+                        </div>`;
+                    break;
+
+                case 'busy':
+                    content = `
+                        <div class="relative flex flex-col items-center justify-center w-full">
+                            <div class="relative bg-amber-50 p-4 rounded-2xl border-2 border-amber-300 shadow-md flex items-center gap-3">
+                                <div class="text-6xl animate-wobble">👨‍💻</div>
+                                <div class="flex flex-col text-left">
+                                    <span class="font-bold text-amber-900 text-sm">Trabajo acumulado</span>
+                                    <span class="text-xs text-amber-700">Llamadas + Correos</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 mt-3 text-2xl animate-bounce">
+                                <span>📱💥</span>
+                                <span>⏳</span>
+                                <span>📑</span>
+                            </div>
+                        </div>`;
+                    break;
+
+                case 'phone':
+                    content = `
+                        <div class="flex flex-col items-center">
+                            <div class="relative">
+                                <div class="w-20 h-36 bg-slate-800 rounded-3xl border-4 border-slate-300 shadow-xl flex flex-col items-center justify-between p-2 animate-float">
+                                    <div class="w-8 h-1 bg-slate-600 rounded-full mt-1"></div>
+                                    <div class="text-3xl my-auto">📲</div>
+                                    <div class="w-4 h-4 border-2 border-slate-500 rounded-full mb-1"></div>
+                                </div>
+                                <div class="absolute -top-2 -right-12 bg-emerald-500 text-white font-bold text-xs px-2.5 py-1 rounded-full shadow animate-bounce">
+                                    ¿Permiso?
+                                </div>
+                            </div>
+                            <p class="text-xs font-bold text-slate-600 mt-3">Solicitud de uso</p>
+                        </div>`;
+                    break;
+
+                case 'languages':
+                case 'polyglot':
+                    content = `
+                        <div class="flex flex-col items-center">
+                            <div class="relative flex items-center justify-center">
+                                <div class="w-20 h-20 bg-indigo-600 rounded-full flex items-center justify-center text-white text-4xl shadow-lg animate-pulse-soft">
+                                    🗣️
+                                </div>
+                                <div class="absolute -top-4 -left-6 bg-white border-2 border-indigo-300 text-indigo-800 font-bold text-xs px-2 py-1 rounded-xl shadow animate-float">
+                                    Hello! 🇬🇧
+                                </div>
+                                <div class="absolute -top-4 -right-6 bg-white border-2 border-indigo-300 text-indigo-800 font-bold text-xs px-2 py-1 rounded-xl shadow animate-float" style="animation-delay: 1s;">
+                                    ¡Hola! 🇪🇸
+                                </div>
+                                <div class="absolute -bottom-3 bg-white border-2 border-indigo-300 text-indigo-800 font-bold text-xs px-2 py-1 rounded-xl shadow animate-float" style="animation-delay: 2s;">
+                                    Bonjour! 🇫🇷
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-indigo-600 mt-6">Capacidad multilingüe</span>
+                        </div>`;
+                    break;
+
+                case 'mall':
+                    content = `
+                        <div class="flex flex-col items-center w-full max-w-xs">
+                            <div class="w-full bg-slate-100 border-2 border-indigo-200 rounded-2xl p-3 flex items-center justify-between shadow-sm">
+                                <div class="text-3xl animate-drive">🚗💨</div>
+                                <div class="flex items-center gap-1 font-fredoka text-indigo-700 font-bold text-sm">
+                                    <span>MALL</span>
+                                    <span class="text-xl">🛍️</span>
+                                </div>
+                            </div>
+                            <div class="w-full bg-slate-300 h-2 rounded-full mt-2 overflow-hidden">
+                                <div class="bg-indigo-500 h-full w-2/3 animate-pulse"></div>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-500 mt-2">¿Puedes llevarme de compras?</p>
+                        </div>`;
+                    break;
+
+                case 'animal':
+                    content = `
+                        <div class="flex flex-col items-center">
+                            <div class="relative bg-amber-50 p-4 rounded-2xl border-2 border-amber-200 shadow-md flex items-center gap-4">
+                                <div class="text-6xl animate-wobble">🐶</div>
+                                <div class="flex flex-col text-left">
+                                    <div class="text-3xl">📖❓</div>
+                                    <span class="text-xs font-bold text-amber-800 mt-1">Sin habilidad de lectura</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-extrabold text-slate-500 mt-2">Los animales no leen libros</span>
+                        </div>`;
+                    break;
+
+                case 'baby_drive':
+                    content = `
+                        <div class="flex flex-col items-center">
+                            <div class="relative flex items-center justify-center">
+                                <div class="w-24 h-24 bg-red-100 border-4 border-red-400 rounded-full flex items-center justify-center text-5xl shadow-md">
+                                    👶
+                                </div>
+                                <div class="absolute -bottom-2 -right-2 bg-slate-800 text-white text-xl p-2 rounded-full border-2 border-white shadow animate-spin-fast">
+                                    🏎️
+                                </div>
+                            </div>
+                            <div class="mt-3 bg-red-600 text-white text-xs font-extrabold px-3 py-1 rounded-full shadow">
+                                🚫 Prohibido: Solo 2 años de edad
+                            </div>
+                        </div>`;
+                    break;
+
+                case 'swim':
+                    content = `
+                        <div class="flex flex-col items-center w-full">
+                            <div class="relative w-full h-24 bg-gradient-to-r from-blue-400 to-cyan-300 rounded-2xl border-2 border-blue-500 overflow-hidden shadow-inner flex items-center justify-center">
+                                <div class="absolute inset-0 opacity-40 animate-wave text-white text-4xl whitespace-nowrap">
+                                    🌊🌊🌊🌊🌊
+                                </div>
+                                <div class="text-5xl animate-swim z-10 drop-shadow">🏊‍♂️</div>
+                            </div>
+                            <p class="text-xs font-bold text-blue-700 mt-2">¡Navega con excelente técnica!</p>
+                        </div>`;
+                    break;
+
+                case 'cook':
+                    content = `
+                        <div class="flex flex-col items-center">
+                            <div class="relative">
+                                <div class="text-6xl animate-pop">🍳</div>
+                                <div class="absolute -top-4 left-4 text-xl animate-steam">☁️</div>
+                                <div class="absolute -top-6 right-2 text-xl animate-steam" style="animation-delay: 0.8s;">☁️</div>
+                            </div>
+                            <div class="flex gap-1 text-amber-400 text-lg mt-1">
+                                🌟🌟🌟🌟🌟
+                            </div>
+                            <p class="text-xs font-bold text-amber-800 bg-amber-100 px-3 py-1 rounded-full border border-amber-200 mt-1">
+                                Excelente sazón y gastronomía
+                            </p>
+                        </div>`;
+                    break;
+
+                case 'run':
+                    content = `
+                        <div class="flex flex-col items-center w-full">
+                            <div class="w-full bg-emerald-50 border-2 border-emerald-300 p-3 rounded-2xl flex items-center justify-around shadow-sm">
+                                <div class="flex flex-col items-center animate-drive">
+                                    <span class="text-4xl">🏃‍♀️💨</span>
+                                    <span class="text-xs font-extrabold text-emerald-700">She (Rápida)</span>
+                                </div>
+                                <div class="text-slate-300 font-black text-xl">VS</div>
+                                <div class="flex flex-col items-center opacity-50">
+                                    <span class="text-3xl">🏃‍♂️</span>
+                                    <span class="text-xs font-bold text-slate-500">Pablo</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-emerald-700 mt-2">Mayor velocidad en la carrera</span>
+                        </div>`;
+                    break;
+
+                case 'full_stomach':
+                    content = `
+                        <div class="flex flex-col items-center">
+                            <div class="relative flex items-center justify-center">
+                                <div class="text-6xl animate-pulse">🤰</div>
+                                <div class="absolute -top-2 -right-4 bg-amber-500 text-white font-extrabold text-[10px] px-2 py-0.5 rounded-full shadow">
+                                    100% FULL
+                                </div>
+                            </div>
+                            <div class="flex gap-2 text-lg text-slate-400 mt-2">
+                                <span class="line-through">🍔</span>
+                                <span class="line-through">🍕</span>
+                                <span class="line-through">🍰</span>
+                            </div>
+                            <p class="text-xs font-bold text-amber-900 bg-amber-100 px-3 py-1 rounded-full border border-amber-200 mt-1">
+                                Imposible comer más
+                            </p>
+                        </div>`;
+                    break;
+
+                case 'cinema_closed':
+                    content = `
+                        <div class="flex flex-col items-center">
+                            <div class="relative w-36 bg-slate-900 text-white p-3 rounded-2xl border-4 border-red-500 shadow-xl text-center">
+                                <div class="text-3xl mb-1">🍿</div>
+                                <div class="bg-red-600 text-white font-black text-xs py-1 rounded tracking-widest animate-pulse">
+                                    CLOSED
+                                </div>
+                                <div class="text-xs text-slate-400 mt-1">Cine cerrado</div>
+                            </div>
+                            <p class="text-xs font-bold text-red-600 mt-2">No podemos entrar hoy</p>
+                        </div>`;
+                    break;
+
+                default:
+                    content = `<div class="text-5xl animate-bounce">✏️</div>`;
+            }
+
+            box.innerHTML = content;
+        }
+
+        function finishGame() {
+            playSound('finish');
+            document.getElementById('playScreen').classList.add('hidden');
+            document.getElementById('resultScreen').classList.remove('hidden');
+            document.getElementById('resultScreen').classList.add('flex');
+
+            let score = 0;
+            const reviewContainer = document.getElementById('reviewContainer');
+            reviewContainer.innerHTML = '';
+
+            questionsData.forEach((q, idx) => {
+                const userAns = userAnswers[q.id] || 'sin responder';
+                const isCorrect = userAns.toLowerCase() === q.correct.toLowerCase();
+                if (isCorrect) score++;
+
+                const prefixHtml = q.prefix ? `${q.prefix} ` : '';
+                const isCapital = q.prefix === '';
+                
+                const userAnsFormatted = isCapital && userAns !== 'sin responder' 
+                    ? (userAns === 'can' ? 'Can' : "Can't") 
+                    : userAns;
+
+                const correctAnsFormatted = isCapital 
+                    ? (q.correct === 'can' ? 'Can' : "Can't") 
+                    : q.correct;
+
+                const card = document.createElement('div');
+                card.className = `p-4 rounded-2xl border-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 transition ${
+                    isCorrect ? 'bg-emerald-50/60 border-emerald-200' : 'bg-rose-50/60 border-rose-200'
+                }`;
+
+                card.innerHTML = `
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0 mt-0.5 ${
+                            isCorrect ? 'bg-emerald-500' : 'bg-rose-500'
+                        }">
+                            ${isCorrect ? '<i class="fa-solid fa-check"></i>' : '<i class="fa-solid fa-xmark"></i>'}
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-800">
+                                ${idx + 1}. ${prefixHtml}<span class="${isCorrect ? 'text-emerald-700 underline font-extrabold' : 'text-rose-600 line-through font-extrabold'}">${userAnsFormatted}</span> ${q.suffix}
+                            </p>
+                            ${!isCorrect ? `
+                                <p class="text-xs text-emerald-700 font-bold mt-1">
+                                    <i class="fa-solid fa-circle-check"></i> Respuesta correcta: <span>${prefixHtml}<strong>${correctAnsFormatted}</strong> ${q.suffix}</span>
+                                </p>
+                            ` : ''}
+                            <p class="text-xs text-slate-500 italic mt-1">Explicación: ${q.explanation}</p>
+                        </div>
+                    </div>
+                    <div class="text-xs font-bold px-3 py-1 rounded-full self-end sm:self-center border shrink-0 ${
+                        isCorrect ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : 'bg-rose-100 text-rose-800 border-rose-300'
+                    }">
+                        ${isCorrect ? 'Correcto' : 'Revisar'}
+                    </div>
+                `;
+
+                reviewContainer.appendChild(card);
+            });
+
+            // Update Score Display
+            const scoreBadge = document.getElementById('scoreBadge');
+            scoreBadge.innerText = `${score}/${questionsData.length}`;
+            
+            const resultTitle = document.getElementById('resultTitle');
+            const resultSubtitle = document.getElementById('resultSubtitle');
+            const greeting = document.getElementById('studentGreeting');
+
+            if (studentName) {
+                greeting.innerText = `Estudiante: ${studentName}`;
+            } else {
+                greeting.innerText = `Resultados de la actividad`;
+            }
+
+            const pctScore = (score / questionsData.length) * 100;
+
+            if (pctScore === 100) {
+                resultTitle.innerText = "¡Puntuación Perfecta! 🌟";
+                resultSubtitle.innerText = "¡Has demostrado un dominio total de CAN y CAN'T!";
+                scoreBadge.className = "w-20 h-20 mx-auto bg-gradient-to-tr from-emerald-400 to-green-600 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg mb-4 animate-bounce";
+            } else if (pctScore >= 70) {
+                resultTitle.innerText = "¡Buen Trabajo! 👍";
+                resultSubtitle.innerText = "Has comprendido muy bien la mayoría de los escenarios.";
+                scoreBadge.className = "w-20 h-20 mx-auto bg-gradient-to-tr from-blue-400 to-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg mb-4";
+            } else {
+                resultTitle.innerText = "¡Sigue Practicando! 💪";
+                resultSubtitle.innerText = "Revisa la lista de respuestas arriba para aprender los patrones de uso.";
+                scoreBadge.className = "w-20 h-20 mx-auto bg-gradient-to-tr from-amber-400 to-orange-500 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg mb-4";
+            }
+        }
+
+        function restartGame() {
+            playSound('click');
+            document.getElementById('resultScreen').classList.add('hidden');
+            document.getElementById('startScreen').classList.remove('hidden');
+        }
+
+        function showInfoModal() {
+            playSound('click');
+            document.getElementById('infoModal').classList.remove('hidden');
+            document.getElementById('infoModal').classList.add('flex');
+        }
+
+        function closeInfoModal() {
+            playSound('click');
+            document.getElementById('infoModal').classList.add('hidden');
+            document.getElementById('infoModal').classList.remove('flex');
+        }
+    </script>
+</body>
+</html>
